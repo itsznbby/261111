@@ -1,0 +1,263 @@
+/* ==========================================
+   1. Base & Variables (基礎變數與色彩設定)
+   ================================---------- */
+:root {
+    --morandi-dark-pink: #a86b75;  /* 深粉色：大標題背景與強調色 */
+    --morandi-light-pink: #f7f1f3; /* 淺粉色：全站柔和基底背景 */
+    --morandi-card-bg: #ffffff;    /* 卡片純白底色 */
+    --morandi-text: #4a3b3e;       /* 柔和深色文字，提升閱讀舒適度 */
+    --morandi-border: #dcd0d3;     /* 柔和邊框色 */
+    --sidebar-width: 290px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--morandi-light-pink);
+    color: var(--morandi-text);
+    line-height: 1.8;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(168, 107, 117, 0.1);
+}
+
+/* ==========================================
+   2. Grid System (網格與響應式 RWD 佈局)
+   ================================---------- */
+.grid-container {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    gap: 28px;
+    max-width: 1260px;
+    margin: 32px auto;
+    padding: 0 20px;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* RWD 斷點：手持行動裝置（小於 768px）自動轉為單欄 */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .media-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================
+   3. Layout (導覽列、Banner、側邊欄、頁尾)
+   ================================---------- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--morandi-card-bg);
+    padding: 18px 36px;
+    border-bottom: 2px solid var(--morandi-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--morandi-dark-pink);
+}
+
+.nav-links a {
+    margin-left: 24px;
+    text-decoration: none;
+    color: var(--morandi-text);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--morandi-dark-pink);
+}
+
+/* 主視覺 Banner */
+.hero-banner {
+    background: linear-gradient(135deg, #a86b75, #c28892);
+    color: #ffffff;
+    text-align: center;
+    padding: 50px 20px;
+    margin-bottom: 10px;
+    box-shadow: inset 0 -10px 20px rgba(0,0,0,0.05);
+}
+
+.hero-banner h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.hero-banner p {
+    font-size: 1.05rem;
+    opacity: 0.95;
+    margin-bottom: 14px;
+}
+
+.team-badge {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: inline-block;
+}
+
+/* 側邊欄 */
+.sidebar {
+    background-color: var(--morandi-card-bg);
+    padding: 28px;
+    border-radius: 12px;
+    border: 1px solid var(--morandi-border);
+    height: fit-content;
+    box-shadow: 0 4px 16px rgba(168, 107, 117, 0.06);
+}
+
+.profile-card h3 {
+    color: var(--morandi-dark-pink);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.profile-card p {
+    font-size: 0.92rem;
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.sidebar-menu {
+    list-style: none;
+    margin-top: 24px;
+    border-top: 1px solid var(--morandi-border);
+    padding-top: 20px;
+}
+
+.sidebar-menu li {
+    margin-bottom: 14px;
+}
+
+.sidebar-menu a {
+    text-decoration: none;
+    color: var(--morandi-text);
+    font-size: 0.94rem;
+    transition: color 0.2s;
+}
+
+.sidebar-menu a:hover {
+    color: var(--morandi-dark-pink);
+}
+
+/* 頁尾 */
+.footer {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--morandi-card-bg);
+    border-top: 1px solid var(--morandi-border);
+    margin-top: 50px;
+    font-size: 0.9rem;
+    color: var(--morandi-text);
+}
+
+/* ==========================================
+   4. Components (大標題、卡片、高亮框、分頁)
+   ================================---------- */
+.content-area {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.content-section {
+    background-color: var(--morandi-card-bg);
+    padding: 32px;
+    border-radius: 12px;
+    border: 1px solid var(--morandi-border);
+    box-shadow: 0 4px 16px rgba(168, 107, 117, 0.05);
+}
+
+/* 規定需求：大標題背後帶有較深的莫蘭迪粉色效果 */
+.content-section h2 {
+    background-color: var(--morandi-dark-pink);
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+.text-block h3 {
+    color: var(--morandi-dark-pink);
+    margin-bottom: 10px;
+    font-size: 1.15rem;
+}
+
+.text-block p {
+    margin-bottom: 12px;
+}
+
+/* 強調框設計 */
+.highlight-box {
+    background-color: #fcf6f7;
+    border-left: 4px solid var(--morandi-dark-pink);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 18px;
+}
+
+/* 分頁元件 (Pagination) */
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+}
+
+.page-item a {
+    display: block;
+    padding: 10px 16px;
+    border: 1px solid var(--morandi-border);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--morandi-text);
+    background-color: var(--morandi-card-bg);
+    transition: all 0.2s;
+}
+
+.page-item.active a {
+    background-color: var(--morandi-dark-pink);
+    color: #ffffff;
+    border-color: var(--morandi-dark-pink);
+}
+
+.page-item a:hover:not(.active) {
+    background-color: #f2e4e7;
+}
